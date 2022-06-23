@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+New Prompt
+{% endblock %}
+
+{% block home %}<a class="nav-link" href="{{ url_for('dashboard') }}">Home <span class="sr-only">(current)</span></a>{% endblock %}
+{% block diary %}<a class="navbar-brand" href="{{ url_for('dashboard') }}">Diary</a>{% endblock %}
+{% block login %}<a class="nav-link disabled" href="{{ url_for('login') }}">Login</a>{% endblock %}
+{% block signup %}<a class="nav-link disabled" href="{{ url_for('signup') }}">Sign Up</a>{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+{% endblock %}
+
+{% block content %}
+
+<!-- cards -->
+<div class="card-group">
+  <div class="card">
+    <img src="{{ url_for('static', filename='images/new_prompt_image.png')}}" class="card-img-top" alt="Girl writing in notebook">
+    <div class="card-body bg-warning">
+    <h5 class="card-title">New prompt</h5>
+    <p class="card-text">Come write about your day!</p>
+    </div>
+    <div class="card-footer">
+    <a href="{{ url_for('newprompt') }}">
+      <button type="button" class="btn btn-success">Create New</button>
+    </a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="{{ url_for('static', filename='images/edit_prompt_image_resized.jpeg')}}" class="card-img-top" alt="hand writing">
+    <div class="card-body bg-warning">
+    <h5 class="card-title">View Prompts</h5>
+    <p class="card-text">Want to see your history? Click me!</p>
+    </div>
+    <div class="card-footer">
+      <a href="{{ url_for('view') }}">
+    <button type="button" class="btn btn-info">View</button>
+      </a>
+    </div>
+  </div>
+  </div>
+<!-- end of cards -->
+
+<!-- text editor -->
+<br>
+<br>
+      
+        <div class="card">
+            <form name="prompt" action="#", method="post">
+              {{ form.hidden_tag() }}
+                <!--<option value="None">None</option>-->
+        <div class="text-center">
+            <div class="input-field bg-warning" aria-placeholder="Enter title">
+            {{ wtf.form_field(form.title) }}
+            </div>
+        </div>
+        <br>
+
+<!--             <textarea name="content" style="height: 500px; width: 500px"></textarea>-->   
+                
+        <div class="text-center">
+          <div class="input-field bg-warning" aria-placeholder="Enter title">
+          {{ wtf.form_field(form.text) }}
+        </div>
+                <input type="submit" name="submit_data" value="Finish" class="btn-btn-primary">
+          
+        </div>
+		</form>
+	    </div>
+      
+<!--
+	<script src="{{url_for('static', filename='ckeditor.js')}}"></script>
+	<script>	
+	CKEDITOR.replace('content');
+	</script>
+-->
+<!--  {% for item in values %}
+      <h4>Content: {{ item.content }}</h4>
+  {% endfor %}
+-->
+<!-- end of editor -->
+{% endblock %}

@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<title>{% block title %}{% endblock %}</title>
+	<link rel="shortcut icon" href="https://www.simpleimageresizer.com/_uploads/photos/2379dad0/removed_background_logo_16x16.png"/>
+	<style>
+		.label {
+  			size: 20;
+		}
+	</style>
+</head>
+	<body style="background-color: rgb(212, 54, 212);">
+	<nav class="navbar navbar-expand-lg navbar-light bg-warning" style="color: rgb(190, 31, 190);">
+		{% block diary %}{% endblock %}
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		    <ul class="navbar-nav mr-auto">
+		      <li class="nav-item active">
+		        {% block home %}{% endblock %}
+		      </li>
+		      <li class="nav-item">
+		        {% block login %}{% endblock %}
+		      </li>
+			  <li class="nav-item">
+		        {% block signup %}{% endblock %}
+		      </li>
+		      <li class="nav-item dropdown">
+		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		          More
+		        </a>
+		        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		          <a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a>
+		        </div>
+		      </li>
+		      <li class="nav-item">
+		      </li>
+		    </ul>
+		    <form class="form-inline my-2 my-lg-0">
+		    </form>
+		  </div>
+		</nav>
+		<div class="text-center">
+			<div class="grid">
+				<div class="g-col-4">
+					<h4>The diary for dummies!</h4>
+				</div>
+			</div>
+	    </div>
+		{% block content %}
+		{% endblock %}
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</body>
+</html>
